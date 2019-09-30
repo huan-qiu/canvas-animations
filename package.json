@@ -1,6 +1,6 @@
 {
-  "name": "canvas-animation",
-  "version": "0.1.0",
+  "name": "canvas-animations",
+  "version": "0.2.0",
   "description": "Creating animation out of the native power of canvas, no dependency attached",
   "keywords": [
     "animation",
@@ -20,13 +20,11 @@
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "eslint": "^6.5.0"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.6.2"
-  },
-  "homepage": "https://github.com/huan555/canvas-animation",
-  "bugs": "https://github.com/huan555/canvas-animation/issues"
+  "dependencies": {},
+  "repository": "https://github.com/huan555/canvas-animations",
+  "homepage": "https://github.com/huan555/canvas-animations",
+  "bugs": "https://github.com/huan555/canvas-animations/issues"
 }

@@ -1,6 +1,6 @@
-## canvas-animation
+## canvas-spritesheet-animation
 
-Canvas-Animation does one single thing; it turns a spritesheet into an animation. Meanwhile, it offers controls like `fps`, `animationIteraionCount`, `play`, `stop`, `destroy` to suit your particular needs, together with an optional `onAnimationEnd` handler.
+Canvas-Spritesheet-Animation does one single thing; it turns a spritesheet into an animation. Meanwhile, it offers controls like `fps`, `animationIteraionCount`, `play`, `stop`, `destroy` to suit your particular needs, together with an optional `onAnimationEnd` handler.
 
 ### 🍾 Features
 
