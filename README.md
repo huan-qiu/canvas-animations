@@ -1,6 +1,6 @@
-## canvas-spritesheet-animation
+## canvas-animations
 
-Canvas-Spritesheet-Animation does one single thing; it turns a spritesheet into an animation. Meanwhile, it offers controls like `fps`, `animationIteraionCount`, `play`, `stop`, `destroy` to suit your particular needs, together with an optional `onAnimationEnd` handler.
+Canvas-Animations does one single thing; it turns a spritesheet into an animation. Meanwhile, it offers controls like `fps`, `animationIteraionCount`, `play`, `stop`, `destroy` to suit your particular needs, together with an optional `onAnimationEnd` handler.
 
 ### 🍾 Features
 
@@ -17,19 +17,19 @@ Canvas-Spritesheet-Animation does one single thing; it turns a spritesheet into 
 Using npm:
 
 ```shell
-  npm install canvas-animation
+  npm install canvas-animations
 ```
 
 Using yarn:
 
 ```shell
-  yarn add canvas-animation
+  yarn add canvas-animations
 ```
 
 #### Step 2: Import helper `setCanvasAnimation` and pass down your config
 
 ```javascript
-import setCanvasAnimation from 'canvas-animation';
+import setCanvasAnimation from 'canvas-animations';
 
 const config = {
   // config whatever you need
