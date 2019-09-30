@@ -2,16 +2,18 @@ function setCanvasAnimation(config) {
   const DEFAULT_OPTS = {
     autoPlay: true,
     onAnimationEnd: null,
+    animationIterationCount: 1,
+    fps: 30,
     ...config
   };
   const {
-    autoPlay,
     container,
+    autoPlay,
+    spriteSheet,
+    totalFrameCounts,
     animationIterationCount,
     width,
     height,
-    spriteSheet,
-    totalFrameCounts,
     fps,
     onAnimationEnd
   } = DEFAULT_OPTS;

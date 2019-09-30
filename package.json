@@ -9,6 +9,9 @@
     "atlas"
   ],
   "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "babel": "npx babel src/setCanvasAnimation.js --out-file dist/index.js"
   },
@@ -25,5 +28,5 @@
     "@babel/runtime": "^7.6.2"
   },
   "homepage": "https://github.com/huan555/canvas-animation",
-  "bugs": "https://github.com/huan555/canvas-animation"
+  "bugs": "https://github.com/huan555/canvas-animation/issues"
 }
