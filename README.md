@@ -38,16 +38,18 @@ const anims = setCanvasAnimation(config);
 ```
 
 ⁉️ What can go in the `config` above 🧩?
-| Property Name | Type | required | default| description|
-| container| Object | Yes | - | the html element that the generated canvas animation would be appended to|
-| autoPlay| Boolean | No | true | whether to autoplay animation or not |
-| spriteSheet | String | Yes| - | the image url of your spritesheet |
-| totalFrameCounts | Number | Yes | - | the total frames of your spritesheet |
-| animationIterationCount | Number | No | 1 | iteration count for your spritesheet |
-| width | Number | Yes | - | the width of each frame in your spritesheet |
-| height | Number | Yes | - | the height of each frame in your spritesheet |
-| fps | Number | No | 30 | the fps for your animation, valid range between 0 and 60 |
-| onAnimationEnd | Function | No | null | onAnimationEnd handler for your animation |
+
+| Property Name               | Type     | required | default | description                                                               |
+| --------------------------- | -------- | -------- | ------- | ------------------------------------------------------------------------- |
+| **container**               | Object   | Yes      | -       | the html element that the generated canvas animation would be appended to |
+| **autoPlay**                | Boolean  | No       | true    | whether to autoplay animation or not                                      |
+| **spriteSheet**             | String   | Yes      | -       | the image url of your spritesheet                                         |
+| **totalFrameCounts**        | Number   | Yes      | -       | the total frames of your spritesheet                                      |
+| **animationIterationCount** | Number   | No       | 1       | iteration count for your spritesheet                                      |
+| **width**                   | Number   | Yes      | -       | the width of each frame in your spritesheet                               |
+| **height**                  | Number   | Yes      | -       | the height of each frame in your spritesheet                              |
+| **fps**                     | Number   | No       | 30      | the fps for your animation, valid range between 0 and 60                  |
+| **onAnimationEnd**          | Function | No       | null    | onAnimationEnd handler for your animation                                 |
 
 #### Step 3: Control your animation
 
@@ -57,4 +59,4 @@ anims.stop(); // stop your anims from playing
 anims.destroy(); // destroy your animsonAnimationEnd
 ```
 
-### 🍻 You are all set! Have fun animating
+### 🍻 You're all set! Have fun animating 🍻
