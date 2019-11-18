@@ -156,6 +156,7 @@ function setCanvasAnimation(config) {
   }
 
   function stop() {
+    hasIteratedCount = 0;
     cancelAnimationFrame(rAF);
   }
 
