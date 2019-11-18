@@ -40,7 +40,7 @@ function setCanvasAnimation(config) {
       const isNotNumber = value => {
         return typeof value !== 'number';
       };
-      const lines = totalFrameCounts / rowFrameCounts;
+      const lines = Math.ceil(totalFrameCounts / rowFrameCounts);
       const intrinsicHeight = img.height;
       if (
         isNotNumber(width) ||

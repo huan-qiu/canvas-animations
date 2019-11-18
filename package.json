@@ -1,6 +1,6 @@
 {
   "name": "canvas-animations",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Creating animation out of the native power of canvas, no dependency attached",
   "keywords": [
     "animation",
