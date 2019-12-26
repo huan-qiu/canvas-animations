@@ -1,6 +1,6 @@
 {
   "name": "canvas-animations",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Creating animation out of the native power of canvas, no dependency attached",
   "keywords": [
     "animation",
@@ -24,7 +24,7 @@
     "eslint": "^6.5.0"
   },
   "dependencies": {},
-  "repository": "https://github.com/huan555/canvas-animations",
-  "homepage": "https://github.com/huan555/canvas-animations",
-  "bugs": "https://github.com/huan555/canvas-animations/issues"
+  "repository": "https://github.com/huan-qiu/canvas-animations",
+  "homepage": "https://github.com/huan-qiu/canvas-animations",
+  "bugs": "https://github.com/huan-qiu/canvas-animations/issues"
 }
