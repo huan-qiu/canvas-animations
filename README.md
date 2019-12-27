@@ -45,7 +45,7 @@ const anims = setCanvasAnimation(config);
 | **autoPlay**                | Boolean  | No       | true    | whether to autoplay animation or not                                      |
 | **spriteSheet**             | String   | Yes      | -       | the image url of your spritesheet                                         |
 | **totalFrameCounts**        | Number   | Yes      | -       | the total frames of your spritesheet                                      |
-| **animationIterationCount** | Number   | No       | 1       | iteration count for your spritesheet                                      |
+| **animationIterationCount** | Number   |          | string  | No                                                                        | 1 | iteration count for your spritesheet, 'infinite' for infinite loop |
 | **width**                   | Number   | Yes      | -       | the width of each frame in your spritesheet                               |
 | **height**                  | Number   | Yes      | -       | the height of each frame in your spritesheet                              |
 | **fps**                     | Number   | No       | 30      | the fps for your animation, valid range between 0 and 60                  |

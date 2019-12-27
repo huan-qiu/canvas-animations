@@ -88,7 +88,7 @@ function setCanvasAnimation(config) {
 
   function drawOneFrame() {
     /* init lastTs for the very first draw */
-    lastTs = !lastTs && Date.now();
+    if (!lastTs) lastTs = Date.now();
     const { sx, sy } = getSxSy(frame);
     ctx.clearRect(0, 0, dx, dy);
     ctx.drawImage(img, sx, sy, width, height, 0, 0, dx, dy);
