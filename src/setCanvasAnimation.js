@@ -1,3 +1,5 @@
+import validateUserConf from './validate';
+
 function setCanvasAnimation(config) {
   const DEFAULT_OPTS = {
     autoPlay: true,
@@ -6,6 +8,7 @@ function setCanvasAnimation(config) {
     fps: 30,
     ...config
   };
+
   const {
     container,
     autoPlay,
@@ -31,67 +34,19 @@ function setCanvasAnimation(config) {
   let containerCompStyles;
   let rAF;
 
+  function onError() {
+    throw new Error('image of `setCanvasAnimation` spritesheet fails to load');
+  }
+
   function onLoad() {
     function initRowFrameCounts() {
       rowFrameCounts = img.width / width;
     }
 
-    function validateConfiguration() {
-      const isNotNumber = value => {
-        return typeof value !== 'number';
-      };
-      const lines = Math.ceil(totalFrameCounts / rowFrameCounts);
-      const intrinsicHeight = img.height;
-      if (
-        isNotNumber(width) ||
-        isNotNumber(height) ||
-        isNotNumber(totalFrameCounts) ||
-        isNotNumber(fps)
-      ) {
-        throw new SyntaxError(
-          "Values of `width`, `height`, `totalFrameCounts`, 'fps` should all be type of Number!"
-        );
-      }
-
-      if (fps > 60 || fps < 1) {
-        throw new SyntaxError('`fps` should range between 0 and 60!');
-      }
-
-      if (
-        animationIterationCount !== 'infinite' &&
-        isNotNumber(animationIterationCount)
-      ) {
-        throw new SyntaxError(
-          "Values of `animationIterationCount` should be either type of Number or 'infinite'!"
-        );
-      }
-
-      if (
-        typeof container !== 'object' ||
-        !container.nodeType ||
-        !container.nodeName
-      ) {
-        throw new SyntaxError('`container` should be an element!');
-      }
-
-      if (height !== intrinsicHeight / lines) {
-        throw new Error(
-          "Value of `height` don't match with dimension of `spritesheet` passed in!"
-        );
-      }
-
-      if (typeof autoPlay !== 'boolean') {
-        throw new SyntaxError('`autoPlay` should be type of Boolean!');
-      }
-
-      if (onAnimationEnd && onAnimationEnd instanceof Function === false) {
-        throw new SyntaxError('`onAnimationEnd` should be a function!');
-      }
-    }
-
     function genCanvasNode() {
       canvasNode = document.createElement('canvas');
       containerCompStyles = window.getComputedStyle(container);
+      // scale the canvas to fit its container
       canvasNode.width = width;
       canvasNode.height = height;
       canvasNode.style.cssText = `width: ${containerCompStyles.width}; height: ${containerCompStyles.height};`;
@@ -99,10 +54,23 @@ function setCanvasAnimation(config) {
       ctx = canvasNode.getContext('2d');
       container.appendChild(canvasNode);
     }
+
     initRowFrameCounts();
-    validateConfiguration();
+    validateUserConf({
+      img,
+      container,
+      totalFrameCounts,
+      rowFrameCounts,
+      width,
+      height,
+      fps,
+      animationIterationCount,
+      autoPlay,
+      onAnimationEnd
+    });
     genCanvasNode();
     drawOneFrame();
+
     if (isAutoPlay) rAF = requestAnimationFrame(continueDrawing);
   }
 
@@ -147,10 +115,6 @@ function setCanvasAnimation(config) {
     rAF = requestAnimationFrame(continueDrawing);
   }
 
-  function onError() {
-    throw new Error('image of `setCanvasAnimation` spritesheet fails to load');
-  }
-
   function play() {
     continueDrawing();
   }
@@ -177,5 +141,4 @@ function setCanvasAnimation(config) {
     destroy
   };
 }
-
 export default setCanvasAnimation;

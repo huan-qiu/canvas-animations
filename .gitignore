@@ -3,3 +3,9 @@
 
 # production
 /dist
+
+/demo
+
+.DS_Store
+/src/.DS_Store
+_watch.js
