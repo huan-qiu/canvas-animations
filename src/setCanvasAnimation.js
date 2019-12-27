@@ -23,16 +23,18 @@ function setCanvasAnimation(config) {
 
   const dx = width;
   const dy = height;
-  const skipCounts = Math.floor(60 / fps);
+
   let rowFrameCounts;
   let isAutoPlay = autoPlay;
   let frame = 0;
-  let speed = 0;
   let hasIteratedCount = 0;
   let canvasNode;
   let ctx;
   let containerCompStyles;
   let rAF;
+  let lastTs = 0;
+  let currTs = 0;
+  const IDEAL_MS_GAP = 16.66 * Math.round(60 / fps);
 
   function onError() {
     throw new Error('image of `setCanvasAnimation` spritesheet fails to load');
@@ -70,10 +72,10 @@ function setCanvasAnimation(config) {
     });
     genCanvasNode();
     drawOneFrame();
-
     if (isAutoPlay) rAF = requestAnimationFrame(continueDrawing);
   }
 
+  /* get next top-left coordinates for next frame to draw */
   function getSxSy(frame) {
     const currRow = Math.floor(frame / rowFrameCounts);
     const frameIdx = frame % rowFrameCounts;
@@ -85,20 +87,26 @@ function setCanvasAnimation(config) {
   }
 
   function drawOneFrame() {
+    /* init lastTs for the very first draw */
+    lastTs = !lastTs && Date.now();
     const { sx, sy } = getSxSy(frame);
     ctx.clearRect(0, 0, dx, dy);
     ctx.drawImage(img, sx, sy, width, height, 0, 0, dx, dy);
-    frame = (frame + 1) % totalFrameCounts;
-    incrSpeed();
+    incrFrame();
   }
 
-  function incrSpeed() {
-    speed = (speed + 1) % skipCounts;
+  function incrFrame() {
+    frame = (frame + 1) % totalFrameCounts;
   }
 
   function continueDrawing() {
     if (!ctx) return false;
-    if (speed % skipCounts === 0) {
+    /* decide whether now is the right time to draw */
+    currTs = Date.now();
+    const valideToDraw = currTs - lastTs >= IDEAL_MS_GAP;
+
+    if (valideToDraw) {
+      lastTs = currTs;
       drawOneFrame();
       if (frame === 0) {
         if (++hasIteratedCount === animationIterationCount) {
@@ -110,8 +118,6 @@ function setCanvasAnimation(config) {
         }
       }
     }
-
-    incrSpeed();
     rAF = requestAnimationFrame(continueDrawing);
   }
 
