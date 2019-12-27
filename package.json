@@ -1,7 +1,7 @@
 {
   "name": "canvas-animations",
-  "version": "0.2.4",
-  "description": "Creating animation out of the native power of canvas, no dependency attached",
+  "version": "0.3.0",
+  "description": "Creating frame animation out of the native power of canvas, no dependency attached",
   "keywords": [
     "animation",
     "canvas",
@@ -13,7 +13,7 @@
     "/dist"
   ],
   "scripts": {
-    "babel": "npx babel src/setCanvasAnimation.js --out-file dist/index.js"
+    "babel": "babel src --out-dir dist"
   },
   "author": "Huan Q",
   "license": "MIT",
