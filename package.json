@@ -1,6 +1,6 @@
 {
   "name": "canvas-animations",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Creating frame animation out of the native power of canvas, no dependency attached",
   "keywords": [
     "animation",

@@ -1,11 +1,22 @@
 import validateUserConf from './validate';
 
+// resolve whether the elem fall in range of [-offsetV, PH+offsetV] vertically
+const PH = window.innerHeight || document.documentElement.clientHeight;
+function _isElemHot(el, offsetV) {
+  const { top, bottom } = el.getBoundingClientRect();
+  return (
+    (top >= 0 && top <= PH + offsetV) || (bottom <= PH && bottom >= -offsetV)
+  );
+}
+
 function setCanvasAnimation(config) {
   const DEFAULT_OPTS = {
     autoPlay: true,
     onAnimationEnd: null,
     animationIterationCount: 1,
     fps: 30,
+    _eco: false,
+    _offsetV: 200,
     ...config
   };
 
@@ -18,7 +29,9 @@ function setCanvasAnimation(config) {
     width,
     height,
     fps,
-    onAnimationEnd
+    onAnimationEnd,
+    _eco,
+    _offsetV
   } = DEFAULT_OPTS;
 
   const dx = width;
@@ -107,6 +120,11 @@ function setCanvasAnimation(config) {
 
     if (valideToDraw) {
       lastTs = currTs;
+      /* experimental feature */
+      if (_eco && !_isElemHot(container, _offsetV)) {
+        rAF = requestAnimationFrame(continueDrawing);
+        return false;
+      }
       drawOneFrame();
       if (frame === 0) {
         if (++hasIteratedCount === animationIterationCount) {
